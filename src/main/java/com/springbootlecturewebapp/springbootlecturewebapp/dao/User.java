@@ -28,8 +28,7 @@ public class User implements Serializable {
     private Date dateCreated;
 
     @ManyToMany
-    @JoinTable
-    private Set<Authority> authorities = new HashSet<Authority>();
+    private Set<Authority> authorities;
 
     public User() {}
 

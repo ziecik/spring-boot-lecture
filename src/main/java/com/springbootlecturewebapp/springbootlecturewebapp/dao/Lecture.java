@@ -2,12 +2,10 @@ package com.springbootlecturewebapp.springbootlecturewebapp.dao;
 
 import com.springbootlecturewebapp.springbootlecturewebapp.dao.type.LectureStatusType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
+
 
 @Entity
 public class Lecture {
@@ -15,6 +13,7 @@ public class Lecture {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToMany
     private Set<User> speakers;
 
     private String title;
@@ -23,11 +22,22 @@ public class Lecture {
 
     private LectureStatusType lectureStatusType;
 
+    @ManyToMany
     private Set<User> attendees;
 
     private String address;
 
+    private Integer quantityOfAttendees;
+
     public Lecture() {
+    }
+
+    public LectureStatusType getLectureStatusType() {
+        return lectureStatusType;
+    }
+
+    public void setLectureStatusType(LectureStatusType lectureStatusType) {
+        this.lectureStatusType = lectureStatusType;
     }
 
     public Long getId() {
@@ -85,4 +95,13 @@ public class Lecture {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public Integer getQuantityOfAttendees() {
+        return quantityOfAttendees;
+    }
+
+    public void setQuantityOfAttendees() {
+        this.quantityOfAttendees = this.attendees.size();
+    }
+
 }
