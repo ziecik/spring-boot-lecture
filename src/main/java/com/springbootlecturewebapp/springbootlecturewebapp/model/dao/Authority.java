@@ -1,6 +1,6 @@
-package com.springbootlecturewebapp.springbootlecturewebapp.dao;
+package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 
-import com.springbootlecturewebapp.springbootlecturewebapp.dao.type.AuthorityType;
+import com.springbootlecturewebapp.springbootlecturewebapp.model.type.AuthorityType;
 
 import javax.persistence.*;
 

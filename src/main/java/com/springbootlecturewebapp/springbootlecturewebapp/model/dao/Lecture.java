@@ -1,6 +1,6 @@
-package com.springbootlecturewebapp.springbootlecturewebapp.dao;
+package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 
-import com.springbootlecturewebapp.springbootlecturewebapp.dao.type.LectureStatusType;
+import com.springbootlecturewebapp.springbootlecturewebapp.model.type.LectureStatusType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

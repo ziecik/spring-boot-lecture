@@ -1,11 +1,10 @@
-package com.springbootlecturewebapp.springbootlecturewebapp.dao;
+package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity

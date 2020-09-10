@@ -1,4 +1,4 @@
-package com.springbootlecturewebapp.springbootlecturewebapp.dao.type;
+package com.springbootlecturewebapp.springbootlecturewebapp.model.type;
 
 public enum LectureStatusType {
     COMMING_SOON,
