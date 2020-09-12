@@ -31,4 +31,5 @@ public class Authority {
     public void setName(AuthorityType name) {
         this.name = name;
     }
+
 }

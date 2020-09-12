@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class User implements Serializable {
@@ -26,8 +26,8 @@ public class User implements Serializable {
 
     private Date dateCreated;
 
-    @ManyToMany
-    private Set<Authority> authorities;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Authority> authorities;
 
     public User() {}
 
@@ -71,11 +71,11 @@ public class User implements Serializable {
         this.dateCreated = dateCreated;
     }
 
-    public Set<Authority> getAuthorities() {
+    public List<Authority> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(Set<Authority> authorities) {
+    public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
     }
 }
