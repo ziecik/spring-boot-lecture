@@ -13,7 +13,7 @@ public class Lecture {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Set<User> speakers;
 
     private String title;
@@ -22,7 +22,7 @@ public class Lecture {
 
     private LectureStatusType lectureStatusType;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Set<User> attendees;
 
     private String address;

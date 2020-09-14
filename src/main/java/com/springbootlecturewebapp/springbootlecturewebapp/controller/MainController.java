@@ -1,16 +1,16 @@
 package com.springbootlecturewebapp.springbootlecturewebapp.controller;
 
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import com.springbootlecturewebapp.springbootlecturewebapp.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MainController {
+    @Autowired
+    UserRepository userRepository;
     @RequestMapping("/")
     public String hello() {
         return (
@@ -18,17 +18,17 @@ public class MainController {
                 );
     }
 
-    @RequestMapping("/user")
-    public String user() {
+    @GetMapping("/user")
+    public String user(Authentication authentication) {
         return (
-                "<h1>Welcome user</h1>"
+                "<h1>Welcome user: " + authentication.getName() + "</h1>"
         );
     }
 
-    @RequestMapping("/admin")
-    public String admin() {
+    @GetMapping("/admin")
+    public String admin(Authentication authentication) {
         return (
-                "<h1>Welcome admin</h1>"
+                "<h1>Welcome admin: " + authentication.getName() + "</h1>"
         );
     }
 }
