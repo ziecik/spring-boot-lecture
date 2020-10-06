@@ -1,5 +1,6 @@
 package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 
+import com.springbootlecturewebapp.springbootlecturewebapp.model.type.AuthorityType;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -26,8 +27,10 @@ public class User implements Serializable {
 
     private Date dateCreated;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Authority> authorities;
+    @NotNull
+    private AuthorityType authorities;
+
+    private boolean isEnabled;
 
     public User() {}
 
@@ -71,11 +74,19 @@ public class User implements Serializable {
         this.dateCreated = dateCreated;
     }
 
-    public List<Authority> getAuthorities() {
+    public AuthorityType getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(List<Authority> authorities) {
+    public void setAuthorities(AuthorityType authorities) {
         this.authorities = authorities;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }

@@ -1,30 +1,34 @@
 package com.springbootlecturewebapp.springbootlecturewebapp.service;
 
-import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.Authority;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.User;
+import com.springbootlecturewebapp.springbootlecturewebapp.model.type.AuthorityType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CustomUserDetails implements UserDetails {
 
     private String username;
     private String password;
-    private List<GrantedAuthority> authorities;
+    private AuthorityType authorities;
+    private boolean isEnabled;
 
     public CustomUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
-        this.authorities = user.getAuthorities().stream().map(Authority::getName).map(Enum::toString).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        this.authorities = user.getAuthorities();
+        this.isEnabled = user.isEnabled();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        List<GrantedAuthority> grantedAuthorities= new ArrayList<GrantedAuthority>();
+        grantedAuthorities.add(new SimpleGrantedAuthority(authorities.toString()));
+        return grantedAuthorities;
     }
 
     @Override
@@ -54,6 +58,6 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isEnabled;
     }
 }
