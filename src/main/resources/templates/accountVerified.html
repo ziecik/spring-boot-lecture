@@ -3,10 +3,13 @@
   xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Congratulations!</title>
+        <link th:href="@{/css/main.css}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <center>
             <h3>Congratulations! Your account has been activated and email is verified!</h3>
+            <br /><br />
+            <a th:href="@{/login}"><h3>Log in</h3></th:href>
         </center>
     </body>
 </html>

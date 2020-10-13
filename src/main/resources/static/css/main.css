@@ -1,0 +1,103 @@
+body {
+    background-image: url("/img/dark-honeycomb.png");
+    margin: 150px;
+    color: beige;
+    font-size: 20px;
+    font-family: 'Capriola', sans-serif;
+
+}
+
+a {
+    color: #CA1F7B;
+}
+
+.msg p {
+    text-align: center;
+    color: rgba(255,0,255,1);
+}
+
+#container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    
+    background-color: black;
+    padding: 50px;
+    
+    -webkit-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    -moz-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password]{
+    width: 300px;
+    background-color: #fefefe;
+    color: #ab00ab;
+    border: 2px solid #000;
+    border-radius: 25px;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    opacity: .7;
+    margin-top: 15px;
+    font-family: 'Capriola', sans-serif;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus{
+    -webkit-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    -moz-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    border: 2px solid rgba(255,0,255,1);
+    background-color: #fad5f5;
+    color: #ab00ab;
+}
+
+input[type=reset],
+input[type=submit]{
+    width: 300px;
+    background-color: #ab00ab;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-family: 'Capriola', sans-serif;
+    margin-top: 15px;
+}
+
+input[type=reset]:hover,
+input[type=submit]:hover{
+     -webkit-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    -moz-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+}
+
+input[type=reset]:focus,
+input[type=submit]:focus{
+    outline: none;
+     -webkit-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    -moz-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+}
+
+input:focus::placeholder {
+/*    color: #ab00ab;*/
+    color: transparent;
+}
+
+input:-webkit-autofill {
+    background-color: #fefefe !important;
+    -webkit-text-fill-color: #ab00ab;
+}

@@ -1,44 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf8mb4_unicode_ci">
-    <title>Register</title>
-</head>
-<body>
-<form action="#" th:action="@{/register}" th:object="${user}" method="post">
-    <table>
-        <tr>
-            <td><label for="username">Username</label></td>
-            <td><input th:field="*{username}" type="text" name="userName"></input></td>
-        </tr>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf8mb4_unicode_ci">
+        <title>Register</title>
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
 
-        <tr>
-            <td><label for="email">Email</label></td>
-            <td><input th:field="*{email}" type="text" name="emailId"></input></td>
-        </tr>
+        <link th:href="@{css/main.css}" href="/css/main.css" rel="stylesheet" type="text/css"/>
+        <!--        <link href="file:///home/jerry/spring/spring-boot-lecture/src/main/resources/static/css/main.css" rel="stylesheet" type="text/css">-->
 
-        <tr>
-            <td><label for="password">Password</label></td>
-            <td><input th:field="*{password}" type="password" name="password"></input></td>
-        </tr>
-<!--        <tr>-->
-<!--            <td><label for="passwordConfirm">Password Confirm</label></td>-->
-<!--            <td><input th:field="*{passwordConfirm}" type="password" name="passwordConfirm"></td>-->
-<!--        </tr>-->
-        <tr>
-            <td><label for="firstName">First name</label></td>
-            <td><input th:field="*{firstName}" type="text" name="firstName"/></td>
-        </tr>
-        <tr>
-            <td><label for="lastName">Last name</label></td>
-            <td><input th:field="*{lastName}" type="text" name="lastName"/></td>
-        </tr>
-        <tr>
-            <td><input type="reset" value="Clear"/></td>
-            <td><input type="submit" value="Submit"></input></td>
-        </tr>
-    </table>
-</form>
-</body>
+    </head>
+    <body>
+        <div id="container">
+            <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+                <label for="username"></label>
+                <input th:field="*{username}" type="text" name="username" placeholder="username"/>         
+                  
+                <label for="email"></label>
+                <input th:field="*{email}" type="email" name="emailId" placeholder="email"/>
+               
+                <label for="password"></label>
+                <input th:field="*{password}" type="password" name="password" placeholder="password"/>
+                   
+                <label for="firstName"></label>
+                <input th:field="*{firstName}" type="text" name="firstName" placeholder="first name"/>
+                
+                <label for="lastName"></label>
+                <input th:field="*{lastName}" type="text" name="lastName" placeholder="last name"/>
+
+               
+
+                <input type="submit" value="Submit"/>
+
+             
+                
+                <input type="reset" value="Clear"/>
+            </form>
+        </div>
+    </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf8mb4_unicode_ci">
+    <title>Login</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div id="container">
+    <div class="msg" th:if="${param.error}">
+        <p>Wrong user or password</p>
+    </div>
+    <form th:action="@{/login}" th:object="${user}" method="post">
+        <label for="username"></label>
+        <input th:field="*{username}" type="text" name="username" placeholder="username"/>
+
+        <label for="password"></label>
+        <input th:field="*{password}" type="password" name="password" placeholder="password"/>
+
+        <input type="submit" value="Login"/>
+
+    </form>
+</div>
+</body>
+</html>
