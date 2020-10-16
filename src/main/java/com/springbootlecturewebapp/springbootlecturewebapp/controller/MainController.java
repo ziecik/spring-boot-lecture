@@ -13,11 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
     @Autowired
     UserRepository userRepository;
-    @RequestMapping("/")
-    public String hello() {
-        return (
-                    "<h1>Welcome</h1>"
-                );
+    @GetMapping("/")
+    public ModelAndView hello(ModelAndView modelAndView, User user) {
+        modelAndView.addObject(user);
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
     @GetMapping("/user")

@@ -6,11 +6,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
 
         <link th:href="@{css/main.css}" href="/css/main.css" rel="stylesheet" type="text/css"/>
-        <!--        <link href="file:///home/jerry/spring/spring-boot-lecture/src/main/resources/static/css/main.css" rel="stylesheet" type="text/css">-->
 
     </head>
     <body>
         <div id="container">
+            <div class="msg">
+                <P>Sign up</P>
+            </div>
             <form action="#" th:action="@{/register}" th:object="${user}" method="post">
                 <label for="username"></label>
                 <input th:field="*{username}" type="text" name="username" placeholder="username"/>         

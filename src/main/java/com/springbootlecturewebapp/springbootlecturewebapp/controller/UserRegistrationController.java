@@ -7,6 +7,8 @@ import com.springbootlecturewebapp.springbootlecturewebapp.repositories.UserRepo
 import com.springbootlecturewebapp.springbootlecturewebapp.service.ConfirmationToken;
 import com.springbootlecturewebapp.springbootlecturewebapp.service.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 @RestController
+@PropertySource("classpath:application.properties")
 public class UserRegistrationController {
 
     @Autowired
@@ -27,6 +30,8 @@ public class UserRegistrationController {
     private ConfirmationTokenRepository confirmationTokenRepository;
     @Autowired
     private EmailSenderService emailSenderService;
+    @Value("${my.local.server.ip}")
+    private String serverIp;
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
     public ModelAndView displayRegistration(ModelAndView modelAndView, User user)
@@ -65,7 +70,7 @@ public class UserRegistrationController {
             mailMessage.setSubject("Complete Registration!");
             mailMessage.setFrom("chand312902@gmail.com");
             mailMessage.setText("To confirm your account, please click here : "
-                    +"http://localhost:8080/confirm-account?token="+confirmationToken.getConfirmationToken());
+                    +"http://"+ serverIp +":8080/confirm-account?token="+confirmationToken.getConfirmationToken());
 
             emailSenderService.sendEmail(mailMessage);
 

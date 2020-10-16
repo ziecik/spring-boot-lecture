@@ -4,16 +4,41 @@ body {
     color: beige;
     font-size: 20px;
     font-family: 'Capriola', sans-serif;
-
 }
 
 a {
-    color: #CA1F7B;
+    box-sizing: border-box;
+    width: 300px;
+    background-color: #ab00ab;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-family: 'Capriola', sans-serif;
+    margin-top: 15px;
 }
 
+
+
+a:hover,
+a:focus{
+    outline: none;
+     -webkit-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    -moz-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+}
+
+.msg {
+    text-align: center;
+    padding-top: 15px;
+}
 .msg p {
     text-align: center;
-    color: rgba(255,0,255,1);
+    
 }
 
 #container {
