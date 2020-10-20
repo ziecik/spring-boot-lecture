@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf8mb4_unicode_ci">
+        <title>Register</title>
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+
+        <link th:href="@{css/main.css}" href="/css/main.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+        <div id="container">
+            <div class="msg">
+                <P>Sign up</P>
+            </div>
+            <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+                <label for="username"></label>
+                <input th:field="*{username}" type="text" name="username" placeholder="username"/>         
+                  
+                <label for="email"></label>
+                <input th:field="*{email}" type="email" name="emailId" placeholder="email"/>
+               
+                <label for="password"></label>
+                <input th:field="*{password}" type="password" name="password" placeholder="password"/>
+                   
+                <label for="firstName"></label>
+                <input th:field="*{firstName}" type="text" name="firstName" placeholder="first name"/>
+                
+                <label for="lastName"></label>
+                <input th:field="*{lastName}" type="text" name="lastName" placeholder="last name"/>
+
+               
+
+                <input type="submit" value="Submit"/>
+
+             
+                
+                <input type="reset" value="Clear"/>
+            </form>
+        </div>
+    </body>
+</html>

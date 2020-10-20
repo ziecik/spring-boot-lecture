@@ -56,7 +56,7 @@ public class UserRegistrationController {
            // userRepository.save(user);
             madeMD5hash(user);
 
-            user.setAuthorities(AuthorityType.ROLE_ADMIN);
+            user.setAuthorities(AuthorityType.ROLE_USER);
             user.setDateCreated(new Date());
 
             userRepository.save(user);
