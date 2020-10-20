@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -42,13 +43,19 @@ public class UserRegistrationController {
     }
 
     @RequestMapping(value="/register", method = RequestMethod.POST)
-    public ModelAndView registerUser(ModelAndView modelAndView, User user)
+    public ModelAndView registerUser(ModelAndView modelAndView, @Valid User user)
     {
 
         User existingUser = userRepository.findByEmail(user.getEmail());
         if(existingUser != null)
         {
             modelAndView.addObject("message","This email already exists!");
+            modelAndView.setViewName("error");
+            existingUser = userRepository.findByUsername(user.getUsername());
+        }
+        else if(existingUser != null)
+        {
+            modelAndView.addObject("message","This username already exists!");
             modelAndView.setViewName("error");
         }
         else

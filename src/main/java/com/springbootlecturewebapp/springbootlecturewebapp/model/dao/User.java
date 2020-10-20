@@ -4,6 +4,7 @@ import com.springbootlecturewebapp.springbootlecturewebapp.model.type.AuthorityT
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,21 +14,21 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotBlank
     @Column(nullable = false, unique = true)
     private String username;
 
-    @NotNull
+    @NotBlank
     private String firstName;
 
-    @NotNull
+    @NotBlank
     private String lastName;
 
-    @NotNull
+    @NotBlank(message = "Email is required")
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotNull
+    @NotBlank
     private String password;
 
     @NotNull
