@@ -4,6 +4,7 @@ import com.springbootlecturewebapp.springbootlecturewebapp.model.type.LectureSta
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 
@@ -13,17 +14,16 @@ public class Lecture {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToMany
-    private Set<User> speakers;
+    private String speakers;
 
     private String title;
 
-    private LocalDateTime date;
+    private String date;
 
     private LectureStatusType lectureStatusType;
 
-    @ManyToMany
-    private Set<User> attendees;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<User> attendees;
 
     private String address;
 
@@ -48,11 +48,11 @@ public class Lecture {
         this.id = id;
     }
 
-    public Set<User> getSpeakers() {
+    public String getSpeakers() {
         return speakers;
     }
 
-    public void setSpeakers(Set<User> speakers) {
+    public void setSpeakers(String speakers) {
         this.speakers = speakers;
     }
 
@@ -64,11 +64,11 @@ public class Lecture {
         this.title = title;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -80,11 +80,11 @@ public class Lecture {
         this.lectureStatusType = lectureStatusType;
     }
 
-    public Set<User> getAttendees() {
+    public List<User> getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(Set<User> attendees) {
+    public void setAttendees(List<User> attendees) {
         this.attendees = attendees;
     }
 

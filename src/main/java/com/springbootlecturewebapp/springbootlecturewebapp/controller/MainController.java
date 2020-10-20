@@ -27,12 +27,12 @@ public class MainController {
         );
     }
 
-    @GetMapping("/admin")
-    public String admin(Authentication authentication) {
-        return (
-                "<h1>Welcome admin: " + authentication.getName() + "</h1>"
-        );
-    }
+//    @GetMapping("/admin")
+//    public String admin(Authentication authentication) {
+//        return (
+//                "<h1>Welcome admin: " + authentication.getName() + "</h1>"
+//        );
+//    }
 
     @GetMapping("/login")
     public ModelAndView login(ModelAndView modelAndView, User user) {
