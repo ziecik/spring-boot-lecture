@@ -3,9 +3,7 @@ package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.type.LectureStatusType;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -14,7 +12,7 @@ public class Lecture {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String speakers;
+    private String speaker;
 
     private String title;
 
@@ -48,12 +46,12 @@ public class Lecture {
         this.id = id;
     }
 
-    public String getSpeakers() {
-        return speakers;
+    public String getSpeaker() {
+        return speaker;
     }
 
-    public void setSpeakers(String speakers) {
-        this.speakers = speakers;
+    public void setSpeaker(String speaker) {
+        this.speaker = speaker;
     }
 
     public String getTitle() {

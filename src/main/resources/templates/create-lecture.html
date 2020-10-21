@@ -5,9 +5,7 @@
         <title>Create lecture</title>
         <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
 
-        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
-
-        
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">      
     </head>
     <body>
         <div id="container">
@@ -19,7 +17,7 @@
                 <input th:field="*{title}" type="text" name="title" placeholder="title"/>
                 
                 <label for="speakers"></label>
-                <input th:field="*{speakers}" type="text" name="speakers" placeholder="speakers"/>         
+                <input th:field="*{speaker}" type="text" name="speaker" placeholder="speaker"/>         
                   
                 <label for="address"></label>
                 <input th:field="*{address}" type="text" name="address" placeholder="address"/>
