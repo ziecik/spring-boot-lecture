@@ -58,6 +58,36 @@ a:focus{
     -webkit-border-radius: 20px 20px 20px 20px;
 }
 
+.large-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+/*    min-height: 500px;*/
+    
+    background-color: black;
+    padding: 50px;
+    
+    -webkit-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    -moz-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+}
+
+.pagination {
+    margin: 5px;
+}
+
+.numbers {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
 input[type=text],
 input[type=email],
 input[type=password],

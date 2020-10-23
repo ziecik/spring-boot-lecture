@@ -2,14 +2,11 @@ package com.springbootlecturewebapp.springbootlecturewebapp.service;
 
 import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.Lecture;
 import com.springbootlecturewebapp.springbootlecturewebapp.repositories.LectureRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +15,6 @@ import java.util.List;
 public class LectureService {
 
     private LectureRepository lectureRepository;
-//    private List<Lecture> lectures = lectureRepository.findAll();
 
     public LectureService(LectureRepository lectureRepository) {
         this.lectureRepository = lectureRepository;

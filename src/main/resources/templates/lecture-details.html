@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Lecture details</title>
+         <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
+
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="large-container" th:object="${lecture}">
+            <h2><p th:text="${lecture.title}"></p></h2>
+            <p th:text="*{speaker}"></p>
+            <p th:text="${lecture.date}"></p>
+            <p th:text="${lecture.address}"></p>
+            <p th:text="${lecture.quantityOfAttendees}">0</p>
+            <p th:text="${lecture.lectureStatusType}"></p>
+        </div>
+    </body>
+</html>

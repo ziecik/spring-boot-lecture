@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="container">
+        <div class="large-container">
             <table>
                 <thead>
                     <tr>
@@ -18,20 +18,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="lecture : ${lectures}">
-                        <td th:text="${lecture.id}" />
+                    <tr th:each="lecture : ${lecturesPage}">
+                        <td><a th:href="@{'/lecture/' + ${lecture.id}}" th:text="${lecture.id}"></a></td>
                         <td th:text="${lecture.speaker}" />
                         <td th:text="${lecture.title}" />
                     </tr>
                 </tbody>
             </table>
-            <div style="float: left" th:if="${lectures.totalPages > 0}" class="pagination"
-            th:each="pageNumber : ${pageNumbers}">
-                <a th:href="@{/admin/lectureList(size=${lectures.size}, page=${pageNumber})}"
-                th:text=${pageNumber}
-                th:class="${pageNumber==lectures.number + 1} ? active"></a>
+            <div class="numbers">
+                <div style="float: left" th:if="${lecturesPage.totalPages > 0}" class="pagination" th:each="pageNumber : ${pageNumbers}">
+                    <a th:href="@{/lectureList(size=${lecturesPage.size}, page=${pageNumber})}"
+                    th:text=${pageNumber}
+                    th:class="${pageNumber==lecturesPage.number + 1} ? active"></a>
+                </div>
+                <div style="clear: both"></div>
             </div>
-
         </div>
     </body>
 </html>

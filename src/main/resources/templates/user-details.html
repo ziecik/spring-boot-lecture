@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>User details</title>
+         <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
+
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="large-container" th:object="${user}">
+            <h2><p th:text="${user.username}"></p></h2>
+            <p th:text="*{firstName}"></p>
+            <p th:text="*{lastName}"></p>
+            <p th:text="*{email}"></p>
+        </div>
+    </body>
+</html>
