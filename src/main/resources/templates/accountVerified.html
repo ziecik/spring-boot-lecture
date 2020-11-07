@@ -7,11 +7,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
     </head>
     <body>
+        <header>
+        
+            <div th:replace="index::mainheader"></div>
+        
+        </header>
         <center>
             <h3>Congratulations! Your account has been activated and email is verified!</h3>
-            <div class="msg">
-                <a th:href="@{/login}">Log in</a>
-            </div>
         </center>
     </body>
 </html>

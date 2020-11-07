@@ -1,18 +1,22 @@
 package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 
 import com.springbootlecturewebapp.springbootlecturewebapp.model.type.LectureStatusType;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
+@Proxy(lazy = false)
 public class Lecture {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String speaker;
+    @ManyToOne
+    private User speaker;
 
     private String title;
 
@@ -26,6 +30,10 @@ public class Lecture {
     private String address;
 
     private Integer quantityOfAttendees;
+
+    private String tags;
+
+    private String description;
 
     public Lecture() {
     }
@@ -44,14 +52,6 @@ public class Lecture {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSpeaker() {
-        return speaker;
-    }
-
-    public void setSpeaker(String speaker) {
-        this.speaker = speaker;
     }
 
     public String getTitle() {
@@ -102,4 +102,27 @@ public class Lecture {
         this.quantityOfAttendees = this.attendees.size();
     }
 
+    public void setSpeaker(User speaker) {
+        this.speaker = speaker;
+    }
+
+    public User getSpeaker() {
+        return speaker;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

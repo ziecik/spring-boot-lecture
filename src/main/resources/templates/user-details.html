@@ -7,11 +7,18 @@
         <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
     </head>
     <body>
+        <header>
+        
+            <div th:replace="index::mainheader"></div>
+        
+        </header>
         <div class="large-container" th:object="${user}">
             <h2><p th:text="${user.username}"></p></h2>
             <p th:text="*{firstName}"></p>
             <p th:text="*{lastName}"></p>
             <p th:text="*{email}"></p>
+            <br />
+            <p th:text="*{bio}"/>
         </div>
     </body>
 </html>

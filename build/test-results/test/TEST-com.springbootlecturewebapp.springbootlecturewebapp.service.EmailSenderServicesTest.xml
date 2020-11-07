@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.springbootlecturewebapp.springbootlecturewebapp.service.EmailSenderServicesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-16T10:37:43" hostname="jerry" time="0.904">
+<testsuite name="com.springbootlecturewebapp.springbootlecturewebapp.service.EmailSenderServicesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-07T21:14:59" hostname="jerry" time="2.427">
   <properties/>
-  <testcase name="sendEmail()" classname="com.springbootlecturewebapp.springbootlecturewebapp.service.EmailSenderServicesTest" time="0.904"/>
+  <testcase name="sendEmail()" classname="com.springbootlecturewebapp.springbootlecturewebapp.service.EmailSenderServicesTest" time="2.427"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

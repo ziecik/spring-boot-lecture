@@ -8,30 +8,62 @@
         <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="msg" sec:authorize="isAnonymous()">
-            Hello Stranger! Wanna <a th:href="@{/login}">sign in</a> or <a th:href="@{/register}">sign up</a> ?
-        </div>
-        <div class="msg" sec:authorize="isAuthenticated()">
-            Hello  <span sec:authentication="name"></span>!
-<!--            Roles: <span sec:authentication="principal.authorities"></span>-->
-            <div class="msg">
-                <img src="/img/unicorn.png" />
+        <header>
+            <div th:fragment="mainheader" class="top">
+                <div class="logo">
+                    Lecturi<span>X</span>
+                </div>
+                <nav>
+                    <div class="menu">
+                        <ul>
+                            <li><a th:href="@{/}" >Home</a></li>
+
+                            <li><a th:href="@{/aboutus}" >About us</a></li>
+                            <li sec:authorize="isAnonymous()"><a th:href="@{/login}" >Sign in</a></li>
+                            <li sec:authorize="isAnonymous()"><a th:href="@{/register}" >Sign up</a></li>
+                            <li sec:authorize="isAuthenticated()"><a th:href="@{/profile}" th:text="Profile">Profile</a></li>
+                            <li sec:authorize="isAuthenticated()" th:fragment="logout">
+
+                                    <form th:action="@{/logout}" method="post">
+                                        <input type="submit" value="Sign out" />        
+                                    </form>
+
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                
+            </div>
+        </header>
+        <main>
+            <div class="large-container">
+                 <h3>Comming soon...</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>speaker</th>
+                        <th>title</th>
+                        <th>tags</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="lecture : ${lecturesPage}">
+                        
+                        <td><a th:href="@{'/users/' + ${lecture.speaker.id}}" th:text="${lecture.speaker.firstName + ' ' + lecture.speaker.lastName}" /> </td>
+                        <td><a class="td-title-a" th:href="@{'/lectures/' + ${lecture.id}}" th:text="${lecture.title}"></a></td>
+                        <td th:text="${lecture.tags}" />
+                    </tr>
+                </tbody>
+            </table>
+            <div class="numbers">
+                <div style="float: left" th:if="${lecturesPage.totalPages > 0}" class="pagination" th:each="pageNumber : ${pageNumbers}">
+                    <a th:href="@{/(size=${lecturesPage.size}, page=${pageNumber})}"
+                    th:text=${pageNumber}
+                    th:class="${pageNumber==lecturesPage.number + 1} ? active"></a>
+                </div>
+                <div style="clear: both"/>
             </div>
         </div>
-        <div class="msg" sec:authorize="hasRole('ROLE_ADMIN')">
-            This content is only shown to administrators.
-        </div>
-        <div class="msg" sec:authorize="hasRole('ROLE_USER')">
-            This content is only shown to users.
-        </div>
-        
-        <div th:fragment="logout"  sec:authorize="isAuthenticated()">
-            <div class="msg">
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Logout" />
-                </form>
-            </div>
-        </div>
-       
+        </main>
     </body>
 </html>

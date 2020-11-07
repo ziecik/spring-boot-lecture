@@ -8,6 +8,11 @@
 
     </head>
     <body>
+        <header>
+        
+            <div th:replace="index::mainheader"></div>
+        
+        </header>
         <div id="container">
             <div class="msg">
                 <P>Log in</P>
@@ -24,9 +29,6 @@
 
                 <input type="submit" value="Login"/>
             </form>
-            <div class="msg">
-                <a th:href="@{/register}">Sign up</a>
-            </div>
         </div>
     </body>
 </html>

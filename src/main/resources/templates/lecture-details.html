@@ -8,13 +8,21 @@
         <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
     </head>
     <body>
+        <header>
+        
+            <div th:replace="index::mainheader"></div>
+        
+        </header>
         <div class="large-container" th:object="${lecture}">
             <h2><p th:text="${lecture.title}"></p></h2>
-            <p th:text="*{speaker}"></p>
+            <p><a th:href="@{'/users/' + ${lecture.speaker.id}}" th:text="*{speaker.firstName + ' ' + speaker.lastName}" /></p>
             <p th:text="${lecture.date}"></p>
             <p th:text="${lecture.address}"></p>
             <p th:text="${lecture.quantityOfAttendees}">0</p>
             <p th:text="${lecture.lectureStatusType}"></p>
+            <br />
+            <br />
+            <p th:text='${lecture.description}'></p>
         </div>
     </body>
 </html>

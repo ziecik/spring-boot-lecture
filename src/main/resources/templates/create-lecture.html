@@ -8,16 +8,23 @@
         <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">      
     </head>
     <body>
+        <header>
+        
+            <div th:replace="index::mainheader"></div>
+        
+        </header>
         <div id="container">
             <div class="msg">
                 <P>Add lecture</P>
             </div>
-            <form th:action="@{/admin/create-lecture}" th:object="${lecture}" method="post">
+            <form th:action="@{/lectures}" th:object="${lecture}" method="post">
                 <label for="title"></label>
                 <input th:field="*{title}" type="text" name="title" placeholder="title"/>
                 
+<!--
                 <label for="speakers"></label>
-                <input th:field="*{speaker}" type="text" name="speaker" placeholder="speaker"/>         
+                <input th:field="*{speaker}" type="text" name="speaker" th:value=""/>         
+-->
                   
                 <label for="address"></label>
                 <input th:field="*{address}" type="text" name="address" placeholder="address"/>
@@ -25,10 +32,14 @@
                 <label for="date"></label>
                 <input th:field="*{date}" type="datetime-local" name="date"/>
                
-
+                <label for="tags"></label> 
+                <input th:field="*{tags}" type="text" name="tags" />
+                
+                <textarea th:field="*{description}" type="text" name="description"></textarea>
+                
                 <input type="submit" value="Submit"/>
 
-             
+                
                 
                 <input type="reset" value="Clear"/>
             </form>

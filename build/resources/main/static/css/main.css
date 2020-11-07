@@ -1,9 +1,11 @@
 body {
     background-image: url("/img/dark-honeycomb.png");
-    margin: 150px;
+    margin-left: auto;
+    margin-right: auto;
     color: beige;
     font-size: 20px;
     font-family: 'Capriola', sans-serif;
+    overflow-x:hidden;
 }
 
 a {
@@ -46,7 +48,82 @@ a:focus{
     margin-right: auto;
     width: 300px;
     
-    background-color: black;
+    background-color: #383440;
+    padding: 50px;
+    
+    -webkit-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    -moz-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+    
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+}
+
+nav {
+    background-color: #383440;
+    text-align: center;
+}
+
+.logo {
+    text-align: center;
+    font-size: 45px;
+    padding: 25px;
+}
+
+.logo > span {
+    color: #ab00ab;
+    font-size: 55px;
+    font-style: italic;
+}
+
+.menu {
+    width: 100%;
+    padding: 5px 0;
+    background-color: #383440;
+    text-align: center;
+    height: 70px;
+    margin-bottom: 50px;
+}
+
+ul {
+    padding: 10px;
+    margin: 0;
+    list-style-type: none;
+    line-height: 200%;
+    display: inline-block;
+}
+
+ul > li {
+    float: left;
+    width: 150px;
+    padding: 5px;
+}
+
+li > a {
+    margin: 0;
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    padding: 0;
+    
+}
+
+li > form > input[type=submit]{
+    margin: 0;
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    padding: 0;
+    height: 40px;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+    
+    background-color: #383440;
     padding: 50px;
     
     -webkit-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
@@ -62,18 +139,25 @@ a:focus{
     margin-left: auto;
     margin-right: auto;
     width: 1200px;
-/*    min-height: 500px;*/
-    
-    background-color: black;
+    text-align: justify;
+    background-color: #383440;
     padding: 50px;
     
-    -webkit-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
-    -moz-box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
-    box-shadow: 0px 0px 24px 3px rgba(255,0,255,1);
+/*
+    -webkit-box-shadow: 0px 0px 24px 1px rgba(255,0,255,1);
+    -moz-box-shadow: 0px 0px 24px 1px rgba(255,0,255,1);
+    box-shadow: 0px 0px 24px 1px rgba(255,0,255,1);
+*/
     
     border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
+}
+
+h3 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .pagination {
@@ -88,6 +172,45 @@ a:focus{
     justify-content: center;
 }
 
+table {
+  table-layout: auto;
+  width: 100%;  
+}
+
+th {
+    padding: 10px;
+}
+
+
+td {
+    padding: 10px;
+    font-size: 20px;
+}
+
+td > a {
+    text-decoration: none;
+    color: #fff;
+    box-sizing: content-box;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.td-title-a {
+    color: #ab00ab; 
+    font-size: 30px;
+}
+
+.td-title-a:hover {
+    color: #fff; 
+    font-size: 30px;
+}
+
+/*
+td > a:hover {
+    
+}
+*/
+
 input[type=text],
 input[type=email],
 input[type=password],
@@ -95,7 +218,8 @@ input[type=datetime-local]{
     width: 300px;
     background-color: #fefefe;
     color: #ab00ab;
-    border: 2px solid #000;
+/*    border: 2px solid #000;*/
+    border: none;
     border-radius: 25px;
     font-size: 15px;
     padding: 10px;
@@ -158,4 +282,16 @@ input:focus::placeholder {
 input:-webkit-autofill {
     background-color: #fefefe !important;
     -webkit-text-fill-color: #ab00ab;
+}
+
+.sticky {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top; 0;
+    z-index: 100;
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
