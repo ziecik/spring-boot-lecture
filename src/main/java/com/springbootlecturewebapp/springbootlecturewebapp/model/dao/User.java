@@ -35,6 +35,8 @@ public class User {
     @NotNull
     private Date dateCreated;
 
+    private Date dateOfLastModification;
+
     @NotNull
     private AuthorityType authorities;
 
@@ -105,6 +107,14 @@ public class User {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public Date getDateOfLastModification() {
+        return dateOfLastModification;
+    }
+
+    public void setDateOfLastModification(Date dateOfLastModification) {
+        this.dateOfLastModification = dateOfLastModification;
     }
 
     public AuthorityType getAuthorities() {

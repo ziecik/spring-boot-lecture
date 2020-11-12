@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,8 @@ public class UserRegistrationController {
     private EmailSenderService emailSenderService;
     @Value("${my.local.server.ip}")
     private String serverIp;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
     public ModelAndView displayRegistration(ModelAndView modelAndView, User user)
@@ -61,10 +64,11 @@ public class UserRegistrationController {
         else
         {
            // userRepository.save(user);
-            madeMD5hash(user);
+//            madeMD5hash(user);
 
             user.setAuthorities(AuthorityType.ROLE_USER);
             user.setDateCreated(new Date());
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
 
             userRepository.save(user);
 
@@ -87,23 +91,6 @@ public class UserRegistrationController {
         }
 
         return modelAndView;
-    }
-
-    private void madeMD5hash(User user) {
-        MessageDigest md;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalArgumentException(e);
-        }
-        byte[] result = md.digest(user.getPassword().getBytes());
-
-        StringBuilder sb = new StringBuilder();
-        for (byte b : result) {
-            sb.append(String.format("%02x", b));
-        }
-
-        user.setPassword("{MD5}" + sb.toString());
     }
 
     @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
