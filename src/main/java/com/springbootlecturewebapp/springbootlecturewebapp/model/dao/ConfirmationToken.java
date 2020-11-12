@@ -1,4 +1,4 @@
-package com.springbootlecturewebapp.springbootlecturewebapp.service;
+package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 
 import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.User;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;

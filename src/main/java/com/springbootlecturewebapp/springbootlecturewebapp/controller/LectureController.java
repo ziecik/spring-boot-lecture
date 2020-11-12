@@ -47,7 +47,7 @@ public class LectureController {
     public RedirectView addLecture(@Valid Lecture lecture, @AuthenticationPrincipal UserDetails userDetails) {
         String username = userDetails.getUsername();
         User user = userRepository.findByUsername(username);
-        lecture.setSpeaker(user);
+
         lectureRepository.save(lecture);
         return new RedirectView("/");
     }

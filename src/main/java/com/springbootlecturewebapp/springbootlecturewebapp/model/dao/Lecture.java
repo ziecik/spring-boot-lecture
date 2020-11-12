@@ -1,26 +1,22 @@
 package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 
+import com.springbootlecturewebapp.springbootlecturewebapp.model.audit.UserDateAudit;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.type.LectureStatusType;
-import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
-@Proxy(lazy = false)
-public class Lecture {
+public class Lecture extends UserDateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    private User speaker;
-
     private String title;
 
-    private String date;
+    private Date date;
 
     private LectureStatusType lectureStatusType;
 
@@ -34,6 +30,9 @@ public class Lecture {
     private String tags;
 
     private String description;
+
+    @OneToMany
+    private List<Comment> comments;
 
     public Lecture() {
     }
@@ -62,11 +61,11 @@ public class Lecture {
         this.title = title;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -102,14 +101,6 @@ public class Lecture {
         this.quantityOfAttendees = this.attendees.size();
     }
 
-    public void setSpeaker(User speaker) {
-        this.speaker = speaker;
-    }
-
-    public User getSpeaker() {
-        return speaker;
-    }
-
     public String getTags() {
         return tags;
     }
@@ -124,5 +115,17 @@ public class Lecture {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setQuantityOfAttendees(Integer quantityOfAttendees) {
+        this.quantityOfAttendees = quantityOfAttendees;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

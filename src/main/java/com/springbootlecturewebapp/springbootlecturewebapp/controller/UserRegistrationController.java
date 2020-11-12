@@ -1,10 +1,10 @@
 package com.springbootlecturewebapp.springbootlecturewebapp.controller;
 
+import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.ConfirmationToken;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.User;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.type.AuthorityType;
 import com.springbootlecturewebapp.springbootlecturewebapp.repositories.ConfirmationTokenRepository;
 import com.springbootlecturewebapp.springbootlecturewebapp.repositories.UserRepository;
-import com.springbootlecturewebapp.springbootlecturewebapp.service.ConfirmationToken;
 import com.springbootlecturewebapp.springbootlecturewebapp.service.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 @RestController
@@ -63,11 +61,7 @@ public class UserRegistrationController {
         }
         else
         {
-           // userRepository.save(user);
-//            madeMD5hash(user);
-
             user.setAuthorities(AuthorityType.ROLE_USER);
-            user.setDateCreated(new Date());
             user.setPassword(passwordEncoder.encode(user.getPassword()));
 
             userRepository.save(user);

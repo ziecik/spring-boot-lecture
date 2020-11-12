@@ -1,4 +1,4 @@
-package com.springbootlecturewebapp.springbootlecturewebapp.service;
+package com.springbootlecturewebapp.springbootlecturewebapp.service.implementations;
 
 import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.User;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.type.AuthorityType;
@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class CustomUserDetails implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
 
     private String username;
     private String password;
     private AuthorityType authorities;
     private boolean isEnabled;
 
-    public CustomUserDetails(User user) {
+    public UserDetailsImpl(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.authorities = user.getAuthorities();

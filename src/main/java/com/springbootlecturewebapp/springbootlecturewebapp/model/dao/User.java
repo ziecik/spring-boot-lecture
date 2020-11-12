@@ -1,14 +1,14 @@
 package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 
+import com.springbootlecturewebapp.springbootlecturewebapp.model.audit.DateAudit;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.type.AuthorityType;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
 
 @Entity
-public class User {
+public class User extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,11 +31,6 @@ public class User {
     private String password;
 
     private String bio;
-
-    @NotNull
-    private Date dateCreated;
-
-    private Date dateOfLastModification;
 
     @NotNull
     private AuthorityType authorities;
@@ -99,22 +94,6 @@ public class User {
 
     public void setBio(String bio) {
         this.bio = bio;
-    }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Date getDateOfLastModification() {
-        return dateOfLastModification;
-    }
-
-    public void setDateOfLastModification(Date dateOfLastModification) {
-        this.dateOfLastModification = dateOfLastModification;
     }
 
     public AuthorityType getAuthorities() {

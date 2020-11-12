@@ -2,6 +2,7 @@ package com.springbootlecturewebapp.springbootlecturewebapp.service;
 
 import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.User;
 import com.springbootlecturewebapp.springbootlecturewebapp.repositories.UserRepository;
+import com.springbootlecturewebapp.springbootlecturewebapp.service.implementations.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
