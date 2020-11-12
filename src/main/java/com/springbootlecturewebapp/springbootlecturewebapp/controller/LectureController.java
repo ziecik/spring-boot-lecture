@@ -52,10 +52,10 @@ public class LectureController {
         return new RedirectView("/");
     }
 
-//    @GetMapping("/lectures")
-//    public List<Lecture> getAllLectures() {
-//        return lectureRepository.findAll();
-//    }
+    @GetMapping("/lectures/all")
+    public List<Lecture> getAllLectures() {
+        return lectureRepository.findAll();
+    }
 
     @GetMapping("/")
     public ModelAndView getLectureLists(ModelAndView modelAndView, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {

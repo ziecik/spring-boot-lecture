@@ -15,7 +15,7 @@
         </header>
         <div class="large-container" th:object="${lecture}">
             <h2><p th:text="${lecture.title}"></p></h2>
-            <p><a th:href="@{'/users/' + ${lecture.speaker.id}}" th:text="*{speaker.firstName + ' ' + speaker.lastName}" /></p>
+            <p><a th:href="@{'/users/' + ${lecture.creatorUser.id}}" th:text="*{creatorUser.firstName + ' ' + creatorUser.lastName}" /></p>
             <p th:text="${lecture.date}"></p>
             <p th:text="${lecture.address}"></p>
             <p th:text="${lecture.quantityOfAttendees}">0</p>
