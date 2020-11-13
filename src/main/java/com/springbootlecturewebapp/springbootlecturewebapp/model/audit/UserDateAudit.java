@@ -12,7 +12,7 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"creatorUser", "modifierUser"})
+//@JsonIgnoreProperties(value = {"creatorUser", "modifierUser"})
 public abstract class UserDateAudit extends DateAudit {
 
     @CreatedBy

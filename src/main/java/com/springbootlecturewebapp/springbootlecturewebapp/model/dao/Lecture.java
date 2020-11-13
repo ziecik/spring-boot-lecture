@@ -4,8 +4,9 @@ import com.springbootlecturewebapp.springbootlecturewebapp.model.audit.UserDateA
 import com.springbootlecturewebapp.springbootlecturewebapp.model.type.LectureStatusType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Set;
 import java.util.List;
-
 
 @Entity
 public class Lecture extends UserDateAudit {
@@ -20,7 +21,7 @@ public class Lecture extends UserDateAudit {
     private LectureStatusType lectureStatusType;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<User> attendees;
+    private Set<User> attendees;
 
     private String address;
 
@@ -30,7 +31,7 @@ public class Lecture extends UserDateAudit {
 
     private String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "lecture", fetch = FetchType.EAGER)
     private List<Comment> comments;
 
     public Lecture() {
@@ -76,11 +77,11 @@ public class Lecture extends UserDateAudit {
         this.lectureStatusType = lectureStatusType;
     }
 
-    public List<User> getAttendees() {
+    public Set<User> getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(List<User> attendees) {
+    public void setAttendees(Set<User> attendees) {
         this.attendees = attendees;
     }
 
@@ -96,9 +97,6 @@ public class Lecture extends UserDateAudit {
         return quantityOfAttendees;
     }
 
-    public void setQuantityOfAttendees() {
-        this.quantityOfAttendees = this.attendees.size();
-    }
 
     public String getTags() {
         return tags;

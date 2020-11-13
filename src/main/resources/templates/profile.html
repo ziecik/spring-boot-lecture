@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="msg" sec:authorize="hasRole('ROLE_ADMIN')">
-                    This content is only shown to administrators.
+                    <a th:href="@{/lectures}">New lecture</a>
                 </div>
                 <div class="msg" sec:authorize="hasRole('ROLE_USER')">
                     This content is only shown to users.

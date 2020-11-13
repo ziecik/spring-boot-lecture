@@ -1,9 +1,11 @@
 package com.springbootlecturewebapp.springbootlecturewebapp.controller;
 
+import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.Comment;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.Lecture;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.dao.User;
 import com.springbootlecturewebapp.springbootlecturewebapp.repositories.LectureRepository;
 import com.springbootlecturewebapp.springbootlecturewebapp.repositories.UserRepository;
+import com.springbootlecturewebapp.springbootlecturewebapp.service.CommentService;
 import com.springbootlecturewebapp.springbootlecturewebapp.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,8 +26,8 @@ import java.util.stream.IntStream;
 @RestController
 public class LectureController {
 
-
-
+    @Autowired
+    CommentService commentService;
     @Autowired
     LectureService lectureService;
     @Autowired
@@ -78,10 +80,24 @@ public class LectureController {
     }
 
     @GetMapping("/lectures/{id}")
-    public ModelAndView getLecture(ModelAndView modelAndView, @PathVariable("id") Long id) {
+    public ModelAndView getLecture(ModelAndView modelAndView, @PathVariable("id") Long id, Comment comment) {
         Lecture lecture = lectureRepository.findOneById(id);
+        lecture = lectureService.sortComments(lecture);
         modelAndView.addObject("lecture", lecture);
         modelAndView.setViewName("lecture-details");
         return modelAndView;
+    }
+
+    @GetMapping("/lectures/{id}/signin")
+    public Lecture signIn(@PathVariable("id") Long id) {
+        return lectureService.signOnLecture(id);
+    }
+
+    @PostMapping("lectures/{id}/comments")
+    public RedirectView addComment(@PathVariable("id") Long id, Comment comment) {
+        commentService.addComment(comment, id);
+
+        String url = "/lectures/" + id;
+        return new RedirectView(url);
     }
 }

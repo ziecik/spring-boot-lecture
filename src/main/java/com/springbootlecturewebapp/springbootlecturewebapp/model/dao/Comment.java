@@ -11,6 +11,9 @@ public class Comment extends UserDateAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String content;
+    @ManyToOne
+    @JoinColumn(name = "lecture_id")
+    private Lecture lecture;
 
     public Long getId() {
         return id;
@@ -26,5 +29,13 @@ public class Comment extends UserDateAudit {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Lecture getLecture() {
+        return lecture;
+    }
+
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
     }
 }

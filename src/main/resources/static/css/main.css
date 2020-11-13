@@ -295,3 +295,39 @@ input:-webkit-autofill {
 ::-webkit-scrollbar {
   width: 0;
 }
+
+.comments {
+    
+}
+
+.comment {
+    margin: 10px;
+    min-height: 50px;
+}
+
+.avatar {
+    font-size: 25px;
+    width: 100px;
+    min-height: height: 100px;
+    float: left;
+    text-align: center;
+    background-color: none;
+}
+
+.details {
+    background-color: darkmagenta;
+    font-size: 13px;
+    float: left;
+    margin: auto;
+    padding: 10px;
+    border-radius: 25px;
+    width: 1000px;
+}
+
+.author {
+    
+}
+
+.content {
+    
+}
