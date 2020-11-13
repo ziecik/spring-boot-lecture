@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf8mb4_unicode_ci">
+        <title>Create lecture</title>
+        <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
+
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">      
+    </head>
+    <body>
+        <header>
+        
+            <div th:replace="index::mainheader"></div>
+        
+        </header>
+        <div id="container">
+            <div class="msg">
+                <P>Add lecture</P>
+            </div>
+            <form th:action="@{/lectures}" th:object="${lecture}" method="post">
+                <label for="title"></label>
+                <input th:field="*{title}" type="text" name="title" placeholder="title"/>
+                
+<!--
+                <label for="speakers"></label>
+                <input th:field="*{speaker}" type="text" name="speaker" th:value=""/>         
+-->
+                  
+                <label for="address"></label>
+                <input th:field="*{address}" type="text" name="address" placeholder="address"/>
+                   
+                <label for="date"></label>
+                <input th:field="*{date}" type="datetime-local" name="date"/>
+               
+                <label for="tags"></label> 
+                <input th:field="*{tags}" type="text" name="tags" />
+                
+                <textarea th:field="*{description}" type="text" name="description"></textarea>
+                
+                <input type="submit" value="Submit"/>
+
+                
+                
+                <input type="reset" value="Clear"/>
+            </form>
+        </div>
+    </body>
+</html>

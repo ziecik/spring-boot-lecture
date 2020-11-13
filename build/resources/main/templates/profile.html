@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
+
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        
+            <div th:replace="index::mainheader"></div>
+        
+        </header>
+    <div class="container">
+            <main>
+                
+                <div class="msg" sec:authorize="isAuthenticated()">
+                    Hello  <span sec:authentication="name"></span>!
+                    <div class="msg">
+                        <img src="/img/unicorn.png" />
+                    </div>
+                </div>
+                <div class="msg" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a th:href="@{/lectures}">New lecture</a>
+                </div>
+                <div class="msg" sec:authorize="hasRole('ROLE_USER')">
+                    This content is only shown to users.
+                </div>
+   
+                
+                    
+            </main>
+       </div>
+</body>
+</html>

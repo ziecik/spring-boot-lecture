@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lecture List</title>
+        <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
+
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+        
+            <div th:replace="index::mainheader"></div>
+        
+        </header>
+        <div class="large-container">
+           
+<!--
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>speaker</th>
+                        <th>title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="lecture : ${lecturesPage}">
+                        <td><a th:href="@{'/lecture/' + ${lecture.id}}" th:text="${lecture.id}"></a></td>
+                        <td th:text="${lecture.speaker}" />
+                        <td th:text="${lecture.title}" />
+                    </tr>
+                </tbody>
+            </table>
+            <div class="numbers">
+                <div style="float: left" th:if="${lecturesPage.totalPages > 0}" class="pagination" th:each="pageNumber : ${pageNumbers}">
+                    <a th:href="@{/lectureList(size=${lecturesPage.size}, page=${pageNumber})}"
+                    th:text=${pageNumber}
+                    th:class="${pageNumber==lecturesPage.number + 1} ? active"></a>
+                </div>
+                <div style="clear: both"/>
+            </div>
+-->
+        </div>
+    </body>
+</html>

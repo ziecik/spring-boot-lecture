@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Lecture details</title>
+         <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
+        
+        <link href="../static/css/fontello.css" th:href="@{/css/fontello.css}" rel="stylesheet" type="text/css"/>
+
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+        
+            <div th:replace="index::mainheader"></div>
+        
+        </header>
+        <div class="large-container" th:object="${lecture}">
+            <h2><p th:text="${lecture.title}"></p></h2>
+            <p><a th:href="@{'/users/' + ${lecture.creatorUser.id}}" th:text="*{creatorUser.firstName + ' ' + creatorUser.lastName}" /></p>
+            <p th:text="${lecture.date}"></p>
+            <p th:text="${lecture.address}"></p>
+            <p th:text="${lecture.quantityOfAttendees}">0</p>
+            <p th:text="${lecture.lectureStatusType}"></p>
+            <br />
+            <br />
+            
+            <p th:text='${lecture.description}'></p>
+            
+            <div class="comments">
+                
+                    <div class="comment" th:each="comment : ${lecture.comments}">
+                        <div class="avatar" >
+                            <i class="demo-icon icon-user-circle-o"></i>
+                        </div>
+                        <div class="details" >
+                            <div class="author" th:text="${comment.creatorUser.username}"></div>
+                            <div class="content" th:text="${comment.content}"></div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                
+            
+                <form th:action="@{'/lectures/' + ${lecture.id} + '/comments'}" th:object="${comment}" method="post">
+                    <textarea th:field="*{content}" type="text" name="content"/>
+                    <input type="submit" value="Submit"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
