@@ -6,7 +6,7 @@
          <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
         
         <link href="../static/css/fontello.css" th:href="@{/css/fontello.css}" rel="stylesheet" type="text/css"/>
-
+        
         <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -17,11 +17,12 @@
         </header>
         <div class="large-container" th:object="${lecture}">
             <h2><p th:text="${lecture.title}"></p></h2>
-            <p><a th:href="@{'/users/' + ${lecture.creatorUser.id}}" th:text="*{creatorUser.firstName + ' ' + creatorUser.lastName}" /></p>
+            <p><a th:href="@{'/users/' + ${lecture.speaker.id}}" th:text="*{speaker.firstName + ' ' + speaker.lastName}" /></p>
             <p th:text="${lecture.date}"></p>
             <p th:text="${lecture.address}"></p>
-            <p th:text="${lecture.quantityOfAttendees}">0</p>
+            <p th:text="'Attendees: ' + ${#sets.size(lecture.attendees)}">0</p>
             <p th:text="${lecture.lectureStatusType}"></p>
+            <p><a th:href="@{'/lectures/' + ${lecture.id} + '/signin' }" th:text="'Sign in'"/></p>
             <br />
             <br />
             
@@ -29,22 +30,32 @@
             
             <div class="comments">
                 
-                    <div class="comment" th:each="comment : ${lecture.comments}">
-                        <div class="avatar" >
-                            <i class="demo-icon icon-user-circle-o"></i>
-                        </div>
-                        <div class="details" >
-                            <div class="author" th:text="${comment.creatorUser.username}"></div>
-                            <div class="content" th:text="${comment.content}"></div>
-                        </div>
-                        <div style="clear: both;"></div>
+                <div class="comment" th:each="comment : ${lecture.comments}">
+                    <div class="avatar" >
+                        <i class="demo-icon icon-user-circle-o"></i>
                     </div>
-                
-            
-                <form th:action="@{'/lectures/' + ${lecture.id} + '/comments'}" th:object="${comment}" method="post">
-                    <textarea th:field="*{content}" type="text" name="content"/>
-                    <input type="submit" value="Submit"/>
-                </form>
+                    <div class="details" >
+                        <div class="author"> 
+                            <a th:href="@{'/users/' + ${comment.author.id}}" th:text="${comment.author.username}"/></div>
+                        <div class="content" th:text="${comment.content}"></div>
+                    </div>
+                    <div style="float: left;" th:if="${#authentication.name == comment.author.username}">
+                        <a th:href="@{'/lectures/' + ${lecture.id} + '/comments/' + ${comment.id}}" th:text="edit"/>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="madeComment">
+                    <div class="avatar" >
+                        <i class="demo-icon icon-user-circle-o"></i>
+                    </div>
+                    <div class="details2">
+                        <form th:action="@{'/lectures/' + ${lecture.id} + '/comments'}" th:object="${comment}" method="post">
+                            <textarea class="textComment" th:field="*{content}" type="text" name="content" placeholder="Add comment..."/>
+                            <input type="submit" value="Submit"/>
+                        </form>
+                    </div>
+                    <div style="clear: both;"></div>       
+                </div>
             </div>
         </div>
     </body>

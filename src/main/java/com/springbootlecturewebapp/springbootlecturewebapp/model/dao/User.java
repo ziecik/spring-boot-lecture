@@ -6,6 +6,7 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 public class User extends DateAudit {
@@ -37,6 +38,9 @@ public class User extends DateAudit {
 
     @NotNull
     private boolean isEnabled;
+
+    @ManyToMany(mappedBy = "attendees")
+    private Set<Lecture> lectures;
 
     public User() {}
 
@@ -110,5 +114,13 @@ public class User extends DateAudit {
 
     public void setEnabled(boolean enabled) {
         isEnabled = enabled;
+    }
+
+    public Set<Lecture> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(Set<Lecture> lectures) {
+        this.lectures = lectures;
     }
 }

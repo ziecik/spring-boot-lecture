@@ -14,13 +14,17 @@ public class Lecture extends UserDateAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    private User speaker;
+
     private String title;
 
     private String date;
 
     private LectureStatusType lectureStatusType;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable
     private Set<User> attendees;
 
     private String address;
@@ -51,6 +55,14 @@ public class Lecture extends UserDateAudit {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getSpeaker() {
+        return speaker;
+    }
+
+    public void setSpeaker(User speaker) {
+        this.speaker = speaker;
     }
 
     public String getTitle() {

@@ -49,7 +49,7 @@ public class LectureController {
     public RedirectView addLecture(@Valid Lecture lecture, @AuthenticationPrincipal UserDetails userDetails) {
         String username = userDetails.getUsername();
         User user = userRepository.findByUsername(username);
-
+        lecture.setSpeaker(user);
         lectureRepository.save(lecture);
         return new RedirectView("/");
     }
@@ -89,15 +89,8 @@ public class LectureController {
     }
 
     @GetMapping("/lectures/{id}/signin")
-    public Lecture signIn(@PathVariable("id") Long id) {
-        return lectureService.signOnLecture(id);
-    }
-
-    @PostMapping("lectures/{id}/comments")
-    public RedirectView addComment(@PathVariable("id") Long id, Comment comment) {
-        commentService.addComment(comment, id);
-
-        String url = "/lectures/" + id;
-        return new RedirectView(url);
+    public RedirectView signIn(@PathVariable("id") Long id) {
+        lectureService.signOnLecture(id);
+        return new RedirectView("/lectures/{id}");
     }
 }

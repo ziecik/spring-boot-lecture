@@ -28,7 +28,14 @@
                 <div class="msg" sec:authorize="hasRole('ROLE_USER')">
                     This content is only shown to users.
                 </div>
-   
+                
+                <table>
+                    <tr th:each="lecture : ${user.lectures}">
+                        <td><a class="td-title-a" th:href="@{'/lectures/' + ${lecture.id}}" th:text="${lecture.title}"></a></td>
+                        
+                    </tr>
+                    
+                </table>
                 
                     
             </main>

@@ -1,5 +1,6 @@
 package com.springbootlecturewebapp.springbootlecturewebapp.model.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.springbootlecturewebapp.springbootlecturewebapp.model.audit.UserDateAudit;
 
 import javax.persistence.*;
@@ -11,9 +12,13 @@ public class Comment extends UserDateAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String content;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "lecture_id")
     private Lecture lecture;
+
+    @ManyToOne
+    private User author;
 
     public Long getId() {
         return id;
@@ -37,5 +42,13 @@ public class Comment extends UserDateAudit {
 
     public void setLecture(Lecture lecture) {
         this.lecture = lecture;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }
